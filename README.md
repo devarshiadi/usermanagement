@@ -1,6 +1,8 @@
-# NOTHING AESTHETICUI
+# UserManagement
 
 A modern, mobile-first Student & Admin Management Portal built with FastAPI, SQLAlchemy, Jinja2, and Bootstrap 5. Designed for beautiful aesthetics, robust user/admin flows, and seamless experience on both desktop and mobile. Endorsed by **curseofwitcher**. All rights reserved. Licensed under the MIT License.
+
+[![GitHub](https://img.shields.io/badge/GitHub-usermanagement-blue?logo=github)](https://github.com/devarshiadi/usermanagement)
 
 ---
 
@@ -48,8 +50,8 @@ All requirements are listed in `requirements.txt`:
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd NOTHING\ AESTHETICUI
+   git clone https://github.com/devarshiadi/usermanagement.git
+   cd usermanagement
    ```
 2. **Create a virtual environment (recommended)**
    ```bash
@@ -73,8 +75,8 @@ All requirements are listed in `requirements.txt`:
 
 1. **Build and run with Docker:**
    ```bash
-   docker build -t nothing-aestheticui .
-   docker run -p 7860:7860 nothing-aestheticui
+   docker build -t usermanagement .
+   docker run -p 7860:7860 usermanagement
    ```
 2. **On Hugging Face Spaces:**
    - Push your code (including `Dockerfile` and `requirements.txt`) to your Space.
@@ -85,7 +87,7 @@ All requirements are listed in `requirements.txt`:
 ## 📁 Project Structure
 
 ```
-NOTHING AESTHETICUI/
+usermanagement/
 ├── main.py              # FastAPI app entrypoint
 ├── models.py            # SQLAlchemy models
 ├── database.py          # DB connection & session
