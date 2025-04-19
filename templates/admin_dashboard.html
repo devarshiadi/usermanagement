@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h3 class="mb-4 text-center">Admin Dashboard</h3>
+<form class="row mb-3 justify-content-center" method="get" action="/admin/dashboard">
+    <div class="col-md-6 col-12 mb-2 mb-md-0">
+        <input type="text" class="form-control" name="search" placeholder="Search by username, name or email" value="{{ search or '' }}">
+    </div>
+    <div class="col-md-2 col-6">
+        <button type="submit" class="btn btn-primary w-100">Search</button>
+    </div>
+</form>
+<div class="table-responsive">
+<table class="table table-bordered table-striped align-middle text-center" style="border-radius:1.5rem;overflow:hidden;">
+    <thead class="table-light">
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.details.first_name }} {{ user.details.last_name }}</td>
+            <td>{{ user.details.email }}</td>
+            <td>{{ user.details.mobile }}</td>
+            <td>
+                <a href="/admin/user/{{ user.id }}" class="btn btn-sm btn-info mx-1 mb-1">View</a>
+                <a href="/admin/user/{{ user.id }}/edit" class="btn btn-sm btn-warning mx-1 mb-1">Edit</a>
+                <a href="/admin/user/{{ user.id }}/delete" class="btn btn-sm btn-danger mx-1 mb-1" onclick="return confirm('Delete user?');">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

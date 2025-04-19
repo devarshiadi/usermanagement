@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}Your Details{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8" style="padding:0;">
+        <form method="post" action="/user/form" novalidate class="needs-validation" style="background:transparent;">
+            <div class="card mb-4" style="border-radius:1.5rem;">
+                <div class="card-header bg-primary text-white">Personal Details</div>
+                <div class="card-body row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="first_name" value="{{ details.first_name or '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="last_name" value="{{ details.last_name or '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" value="{{ details.email or '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Mobile No</label>
+                        <input type="tel" class="form-control" name="mobile" value="{{ details.mobile or '' }}" required pattern="[0-9]{10}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" name="dob" value="{{ details.dob.strftime('%Y-%m-%d') if details.dob else '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select" name="gender" required>
+                            <option value="">Select</option>
+                            <option value="Male" {% if details.gender=='Male' %}selected{% endif %}>Male</option>
+                            <option value="Female" {% if details.gender=='Female' %}selected{% endif %}>Female</option>
+                            <option value="Other" {% if details.gender=='Other' %}selected{% endif %}>Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4" style="border-radius:1.5rem;">
+                <div class="card-header bg-success text-white">Educational Information</div>
+                <div class="card-body row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Current Semester</label>
+                        <input type="text" class="form-control" name="current_semester" value="{{ details.current_semester or '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Class 10th Percentage</label>
+                        <input type="number" step="0.01" min="0" max="100" class="form-control" name="tenth_percentage" value="{{ details.tenth_percentage or '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Class 12th Percentage</label>
+                        <input type="number" step="0.01" min="0" max="100" class="form-control" name="twelfth_percentage" value="{{ details.twelfth_percentage or '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Graduation Percentage</label>
+                        <input type="number" step="0.01" min="0" max="100" class="form-control" name="graduation_percentage" value="{{ details.graduation_percentage or '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Specialization</label>
+                        <input type="text" class="form-control" name="specialization" value="{{ details.specialization or '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Experience Status</label>
+                        <select class="form-select" name="experience_status" required>
+                            <option value="">Select</option>
+                            <option value="Experienced" {% if details.experience_status=='Experienced' %}selected{% endif %}>Experienced</option>
+                            <option value="Fresher" {% if details.experience_status=='Fresher' %}selected{% endif %}>Fresher</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">{{ 'Update' if details and details.first_name else 'Submit' }}</button>
+        </form>
+    </div>
+</div>
+<script>
+(function () {
+  'use strict';
+  var forms = document.querySelectorAll('.needs-validation');
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}View User{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8" style="padding:0;">
+        <div class="card mb-4 admin-card" style="border-radius:1.5rem;">
+            <div class="card-header bg-info text-white rounded-top-4">User Details</div>
+            <div class="card-body row g-3">
+                <div class="col-md-6"><strong>Username:</strong> {{ user.username }}</div>
+                <div class="col-md-6"><strong>Name:</strong> {{ details.first_name }} {{ details.last_name }}</div>
+                <div class="col-md-6"><strong>Email:</strong> {{ details.email }}</div>
+                <div class="col-md-6"><strong>Mobile:</strong> {{ details.mobile }}</div>
+                <div class="col-md-6"><strong>Date of Birth:</strong> {{ details.dob }}</div>
+                <div class="col-md-6"><strong>Gender:</strong> {{ details.gender }}</div>
+                <div class="col-md-6"><strong>Current Semester:</strong> {{ details.current_semester }}</div>
+                <div class="col-md-6"><strong>10th </strong> {{ details.tenth_percentage }} %</div>
+                <div class="col-md-6"><strong>12th </strong> {{ details.twelfth_percentage }} %</div>
+                <div class="col-md-6"><strong>Graduation </strong> {{ details.graduation_percentage }} %</div>
+                <div class="col-md-6"><strong>Specialization:</strong> {{ details.specialization }}</div>
+                <div class="col-md-6"><strong>Experience:</strong> {{ details.experience_status }}</div>
+            </div>
+        </div>
+        <a href="/admin/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}
